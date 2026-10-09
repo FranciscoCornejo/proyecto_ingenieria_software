@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}<h1>Kilómetros a metros</h1><p>Ejemplo docente: formulario → cálculo Python → resultado.</p>
+<form method="get" action="{{ url_for('ejemplo.index') }}">
+<label for="km">Kilómetros (entre 0 y 1.000.000; usa punto para decimales)</label>
+<input id="km" name="km" type="number" step="any" min="0" max="1000000" value="{{ value }}" required>
+<button>Convertir</button></form>
+{% if error %}<p class="error" role="alert">{{ error }}</p>{% endif %}
+{% if result is not none %}<p class="result">Resultado: {{ result }} metros</p>{% endif %}
+{% endblock %}

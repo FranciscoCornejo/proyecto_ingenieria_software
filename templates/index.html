@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}<h1>Portal de funcionalidades</h1>
+<p>Selecciona un módulo. Cada grupo construye una función pequeña e independiente.</p>
+<div class="grid">{% for module in modules %}<article>
+<h2>{{ module.title }}</h2><a href="{{ url_for(module.id + '.index') }}">Abrir módulo</a>
+</article>{% endfor %}</div>{% endblock %}

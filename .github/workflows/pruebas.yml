@@ -1,0 +1,37 @@
+name: Pruebas
+on:
+  push:
+    branches: [main, integracion, 'grupo_*']
+  pull_request:
+    branches: [main, integracion]
+permissions:
+  contents: read
+jobs:
+  pruebas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r requirements-dev.txt
+      - run: python -m pytest
+      - name: Comprobar carpeta del grupo
+        if: github.event_name == 'pull_request' && github.base_ref == 'integracion'
+        env:
+          HEAD_BRANCH: ${{ github.head_ref }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          git show "$BASE_SHA:scripts/check_scope.py" > "$RUNNER_TEMP/check_scope.py"
+          python "$RUNNER_TEMP/check_scope.py" "$HEAD_BRANCH" "$BASE_SHA" "$HEAD_SHA"
+      - name: Promover solo desde integración
+        if: github.event_name == 'pull_request' && github.base_ref == 'main'
+        env:
+          HEAD_BRANCH: ${{ github.head_ref }}
+          SAME_REPO: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
+        run: |
+          test "$HEAD_BRANCH" = "integracion"
+          test "$SAME_REPO" = "true"
