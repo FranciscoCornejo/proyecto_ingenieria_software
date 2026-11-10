@@ -1,4 +1,122 @@
-{% extends 'base.html' %}
-{% block content %}<h1>Grupo 04</h1>
-<p>Implementar aquí el formulario y el resultado de la funcionalidad acordada.</p>
+{% extends 'base.html' %} {% block content %}
+
+<style>
+  .contenedor-cupos {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .contenedor-cupos h2 {
+    color: #173b61;
+    text-align: center;
+  }
+
+  .campo {
+    margin-top: 20px;
+  }
+
+  .campo label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+
+  .campo input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+  }
+
+  .boton-calcular {
+    margin-top: 25px;
+    width: 100%;
+    padding: 12px;
+    background: #173b61;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .boton-calcular:hover {
+    background: #245a91;
+  }
+
+  .resultado {
+    margin-top: 25px;
+    padding: 15px;
+    background: #e6f4ea;
+    text-align: center;
+    border-radius: 6px;
+  }
+
+  .error {
+    margin-top: 20px;
+    padding: 12px;
+    background: #ffe5e5;
+    color: #a00000;
+    border-radius: 6px;
+  }
+</style>
+
+<div class="contenedor-cupos">
+  <h2>Disponibilidad de Cupos</h2>
+
+  <p>
+    Ingresa la capacidad total y los cupos ocupados para conocer la
+    disponibilidad.
+  </p>
+
+  <form method="GET" action="{{ url_for('grupo_04.calcular') }}">
+    <div class="campo">
+      <label for="capacidad_total"> Capacidad total: </label>
+
+      <input
+        type="number"
+        id="capacidad_total"
+        name="capacidad_total"
+        min="0"
+        max="100"
+        step="1"
+        required
+      />
+    </div>
+
+    <div class="campo">
+      <label for="cupos_ocupados"> Cupos ocupados: </label>
+
+      <input
+        type="number"
+        id="cupos_ocupados"
+        name="cupos_ocupados"
+        min="0"
+        step="1"
+        required
+      />
+    </div>
+
+    <button type="submit" class="boton-calcular">
+      Calcular disponibilidad
+    </button>
+  </form>
+
+  {% if resultado is defined and resultado is not none %}
+  <div class="resultado">
+    <h3>Cupos disponibles: {{ resultado }}</h3>
+
+    {% if resultado == 0 %}
+    <p>No quedan cupos disponibles.</p>
+    {% endif %}
+  </div>
+  {% endif %} {% if error is defined and error %}
+  <div class="error">{{ error }}</div>
+  {% endif %}
+</div>
+
 {% endblock %}
