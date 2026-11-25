@@ -11,7 +11,7 @@
 ## 1. Descripción del Módulo
 El módulo automatiza el cálculo de cotizaciones comerciales aplicando tramos de descuento escalonados según el volumen de productos solicitados por el cliente.
 
-- **Cómo acceder:** Ingresar localmente en la ruta del servidor Flask: `http://127.0.0.1:5000/modulos/grupo_09/`
+- **Cómo acceder:** Ingresar localmente en la ruta del servidor Flask: `[http://127.0.0.1:5000/modulos/grupo_09/](http://127.0.0.1:5000/modulos/grupo_09/)`
 
 ## 2. Entradas y Restricciones
 - **`cantidad`**: Número entero estrictamente mayor a 0.

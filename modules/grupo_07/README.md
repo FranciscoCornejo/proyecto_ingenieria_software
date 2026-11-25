@@ -11,3 +11,11 @@ Completar:
 
 La pantalla inicial no es la entrega terminada. Implementar una función pequeña
 que reciba datos del formulario y muestre un resultado, sin guardar información.
+
+
+## Prueba de publicación
+Grupo: 07
+Representante: Javiera Herrera
+Usuario GitHub: Javi-HG
+Fecha: 09/11/2026
+Prueba de publicación en la rama integracion.

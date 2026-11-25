@@ -11,3 +11,10 @@ Completar:
 
 La pantalla inicial no es la entrega terminada. Implementar una función pequeña
 que reciba datos del formulario y muestre un resultado, sin guardar información.
+
+## Prueba de publicación
+Grupo: 01
+Representante: nombre y apellido
+Usuario GitHub: usuario
+Fecha: día/mes/año
+Prueba de publicación en la rama integracion.

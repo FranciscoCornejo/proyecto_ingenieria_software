@@ -59,3 +59,10 @@ GitHub conserva código y ejecuta pruebas. La aplicación corre en el equipo loc
 
 La ejecución local es para clase y demostración. El servidor incluido de Flask no
 es una configuración para publicar el sitio en internet.
+
+## Prueba de publicación
+Grupo: 05
+Representante: Bastián Villar
+Usuario GitHub: bastianvillar-beep
+Fecha: 16/11/2026
+Prueba de publicación en la rama integracion.
